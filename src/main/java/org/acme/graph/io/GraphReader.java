@@ -95,7 +95,9 @@ public class GraphReader {
 			// directEdge.setSource(source);
 			// directEdge.setTarget(target);
 			// graph.getEdges().add(directEdge);
-			graph.createEdge(source, target,(id + "-direct"));
+			Edge diedge = graph.createEdge(source, target,(id + "-direct"));
+			diedge.setGeometry(geometry);
+
 		}
 		if (sens.equals(DOUBLE_SENS) || sens.equals(SENS_INVERSE)) {
 			/* Création de l'arc pour le parcours en sens opposé */
@@ -104,9 +106,11 @@ public class GraphReader {
 			// reverseEdge.setSource(target);
 			// reverseEdge.setTarget(source);
 			// graph.getEdges().add(reverseEdge);
-			graph.createEdge(target, source,(id + "-reverse"));
+			Edge reedge = graph.createEdge(target, source,(id + "-reverse"));
+			reedge.setGeometry(geometry);
 
 		}
+
 	}
 
 	/**
