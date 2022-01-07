@@ -3,6 +3,7 @@ package org.acme.graph.routing;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.acme.graph.model.Edge;
 import org.acme.graph.model.Graph;
@@ -35,9 +36,11 @@ public class DijkstraPathFinder {
 	 * @return
 	 */
 	public List<Edge> findPath(Vertex origin, Vertex destination) {
+		
+		
 		log.info("findPath({},{})...", origin, destination);
 		initGraph(origin);
-		Vertex current;
+		Vertex current;			
 		while ((current = findNextVertex()) != null) {
 			visit(current);
 			if (destination.getReachingEdge() != null) {
@@ -45,8 +48,9 @@ public class DijkstraPathFinder {
 				return buildPath(destination);
 			}
 		}
-		log.info("findPath({},{}) : path not found", origin, destination);
-		return null;
+		throw new NoSuchElementException(String.format("Path not found from '%s' to '%s", origin, destination));				
+	
+	
 	}
 
 	/**
