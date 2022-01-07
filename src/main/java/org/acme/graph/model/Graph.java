@@ -78,10 +78,12 @@ public class Graph {
 			vertex = findVertex(coordinate);
 		} catch (NotFoundException e) {
 			/* création d'un nouveau sommet car non trouvé */
-			vertex = new Vertex();
-			vertex.setId(Integer.toString(getVertices().size()));
-			vertex.setCoordinate(coordinate);
-			vertices.add(vertex);
+			//vertex = new Vertex();
+			// vertex.setId(Integer.toString(getVertices().size()));
+			// vertex.setCoordinate(coordinate);
+			// vertices.add(vertex);
+			vertex = createVertex(coordinate,(Integer.toString(getVertices().size())));
+
 		}
 		return vertex;
 	}
@@ -102,14 +104,14 @@ public class Graph {
 	 * @return
 	 */
 	public List<Edge> getInEdges(Vertex vertex) {
-		List<Edge> result = new ArrayList<>();
-		for (Edge candidate : edges) {
-			if (candidate.getTarget() != vertex) {
-				continue;
-			}
-			result.add(candidate);
-		}
-		return result;
+		// List<Edge> result = new ArrayList<>();
+		// for (Edge candidate : edges) {
+		// 	if (candidate.getTarget() != vertex) {
+		// 		continue;
+		// 	}
+		// 	result.add(candidate);
+		// }
+		return vertex.getInEdges();
 	}
 
 	/**
@@ -119,14 +121,15 @@ public class Graph {
 	 * @return
 	 */
 	public List<Edge> getOutEdges(Vertex vertex) {
-		List<Edge> result = new ArrayList<>();
-		for (Edge candidate : edges) {
-			if (candidate.getSource() != vertex) {
-				continue;
-			}
-			result.add(candidate);
-		}
-		return result;
+		// List<Edge> result = new ArrayList<>();
+		// for (Edge candidate : edges) {
+		// 	if (candidate.getSource() != vertex) {
+		// 		continue;
+		// 	}
+		// 	result.add(candidate);
+		// }
+		// return result;
+			return vertex.getOutEdges();
 	}
 
 	
