@@ -34,17 +34,10 @@ public class Edge {
 	private Vertex target;
 
 
-	public Edge(Vertex source, Vertex target) {
+	Edge(Vertex source, Vertex target) {
 
-		if(source == null || target == null){
-			this.source = new Vertex();
-			this.target = new Vertex();
-
-		}else{
 		this.source = source;
 		this.target = target; 	
-		}
-
 	}
 
 	public String getId() {
