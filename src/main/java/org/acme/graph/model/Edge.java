@@ -33,7 +33,17 @@ public class Edge {
 	 */
 	private Vertex target;
 
-	public Edge() {
+
+	public Edge(Vertex source, Vertex target) {
+
+		if(source == null || target == null){
+			this.source = new Vertex();
+			this.target = new Vertex();
+
+		}else{
+		this.source = source;
+		this.target = target; 	
+		}
 
 	}
 
